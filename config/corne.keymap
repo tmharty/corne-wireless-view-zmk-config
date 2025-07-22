@@ -5,8 +5,8 @@
  */
 // Allow for mouse control
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+// #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+// #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -14,18 +14,18 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // To further tweak mouse movement
-// &mmv {
-// x-input-code = <INPUT_REL_X>;
-// y-input-code = <INPUT_REL_Y>;
-// time-to-max-speed-ms = <300>;
-// acceleration-exponent = <1>;
-// };
-// &msc {
-// x-input-code = <INPUT_REL_HWHEEL>;
-// y-input-code = <INPUT_REL_WHEEL>;
-// time-to-max-speed-ms = <300>;
-// acceleration-exponent = <0>;
-// };
+&mmv {
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        time-to-max-speed-ms = <500>;
+        acceleration-exponent = <1>;
+};
+&msc {
+        x-input-code = <INPUT_REL_HWHEEL>;
+        y-input-code = <INPUT_REL_WHEEL>;
+        time-to-max-speed-ms = <300>;
+        acceleration-exponent = <0>;
+};
 
 / {
     behaviors {
@@ -43,6 +43,7 @@
         compatible = "zmk,keymap";
 
         qwerty {
+            display-name = "QWERTY";
             bindings = <
 &kp TAB    &kp Q              &kp W             &kp E        &kp R         &kp T    &kp Y  &kp U         &kp I        &kp O             &kp P                       &kp ESC
 &kp BSPC   &bhm LEFT_SHIFT A  &bhm RIGHT_ALT S  &bhm LGUI D  &bhm RCTRL F  &kp G    &kp H  &bhm RCTRL J  &bhm RGUI K  &bhm RIGHT_ALT L  &bhm RIGHT_SHIFT SEMICOLON  &kp SQT
@@ -52,15 +53,17 @@
         };
 
         nav {
+                display-name = "NAV";
             bindings = <
-&trans  &trans     &trans     &trans     &trans     &trans     &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans  &trans
-&trans  &kp RC(A)  &kp RC(S)  &kp DEL    &kp RC(F)  &kp ESC    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
+&trans  &trans     &trans     &trans     &trans     &trans     &kp HOME        &kp PG_DN       &kp PG_UP     &kp END            &trans  &trans
+&trans  &kp RC(A)  &kp RC(S)  &kp DEL    &kp RC(F)  &kp ESC    &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT          &trans  &trans
 &trans  &kp RC(Z)  &kp RC(X)  &kp RC(C)  &kp RC(V)  &trans     &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT    &trans  &trans
-                              &trans     &trans     &to 0      &mo 3     &trans     &trans
+                              &trans     &trans     &to 0      &mo 3           &trans          &trans
             >;
         };
 
         sym {
+                display-name = "SYM";
             bindings = <
 &trans  &kp GRAVE                 &trans  &trans  &trans  &trans    &kp BSLH  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT                   &trans
 &trans  &bhm LEFT_SHIFT NUMBER_1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7     &kp N8     &kp N9    &bhm RIGHT_SHIFT NUMBER_0  &trans
@@ -70,6 +73,7 @@
         };
 
         mouse {
+                display-name = "MOUSE";
             bindings = <
 &trans  &trans            &mkp MCLK   &mkp RCLK        &mkp LCLK          &kp C_BRIGHTNESS_INC    &trans          &mkp LCLK       &mkp RCLK     &mkp MCLK        &trans  &trans
 &trans  &trans            &trans      &trans           &trans             &kp C_BRIGHTNESS_DEC    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
@@ -79,6 +83,7 @@
         };
 
         bt_fun {
+                display-name = "BT Fn";
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &kp F11  &kp F12  &trans  &trans   &trans
 &trans      &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6  &kp F7   &kp F8   &kp F9  &kp F10  &trans
