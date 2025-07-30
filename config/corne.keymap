@@ -38,14 +38,14 @@
             bindings = <&kp>, <&kp>;
         };
     };
-
+ 
     keymap {
         compatible = "zmk,keymap";
 
         qwerty {
             display-name = "QWERTY";
             bindings = <
-&kp TAB    &kp Q              &kp W             &kp E        &kp R         &kp T    &kp Y  &kp U         &kp I        &kp O             &kp P                       &kp ESC
+&kp TAB    &kp Q              &kp W             &kp E        &kp R         &kp T    &kp Y  &kp U         &kp I        &kp O             &kp P                       &mo 5
 &kp BSPC   &bhm LEFT_SHIFT A  &bhm RIGHT_ALT S  &bhm LGUI D  &bhm RCTRL F  &kp G    &kp H  &bhm RCTRL J  &bhm RGUI K  &bhm RIGHT_ALT L  &bhm RIGHT_SHIFT SEMICOLON  &kp SQT
 &caps_word   &kp Z              &kp X             &kp C        &kp V         &kp B    &kp N  &kp M         &kp COMMA    &kp DOT           &kp FSLH                    &kp RSHFT
                                                 &lt 4 LGUI   &kp RET       &mo 1    &mo 2  &kp SPACE     &mo 3
@@ -89,6 +89,16 @@
 &trans      &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6  &kp F7   &kp F8   &kp F9  &kp F10  &trans
 &trans      &trans        &trans        &trans        &trans        &trans          &kp F1  &kp F2   &kp F3   &kp F4  &kp F5   &trans
                                         &to 0         &trans        &trans          &trans  &trans   &trans
+            >;
+        };
+
+        one_hand {
+                display-name = "1 HAND";
+            bindings = <
+&trans &trans &trans &trans &trans &trans    &trans &trans &trans &kp RGUI(RS(l)) &kp RGUI(l) &trans
+&trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans          &trans      &trans
+&trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans          &trans      &trans
+                     &trans &trans &trans    &to 2  &to 1  &to 3
             >;
         };
     };
